@@ -17,7 +17,7 @@ public class AverageSessionDuration implements Function<List<SleepingSession>, S
 
         if (averageSleepingSession.isPresent()) {
 
-            return new SleepAnalysisResult(TITLE, String.format("%.1f минут", averageSleepingSession.getAsDouble()));
+            return new SleepAnalysisResult(TITLE, String.format("%.0f минут", averageSleepingSession.getAsDouble()));
         } else {
             return new SleepAnalysisResult(TITLE, "не найдена");
         }

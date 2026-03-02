@@ -32,7 +32,7 @@ class AverageSessionDurationTest {
 
         SleepAnalysisResult result = averageSessionDuration.apply(sessions);
 
-        assertEquals("600,0 минут", result.getResult());
+        assertEquals("600 минут", result.getResult());
         assertEquals("Средняя продолжительность сессии сна (в минутах)", result.getFunctionTitle());
     }
 

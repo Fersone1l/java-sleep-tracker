@@ -1,6 +1,5 @@
 package ru.yandex.practicum.sleeptracker;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -42,13 +41,13 @@ public class ChronotypeDefinition implements Function<List<SleepingSession>, Sle
 
         LocalDateTime owlStart = start.getDayOfYear() == end.getDayOfYear() ?
                 LocalDateTime.of(start.toLocalDate().minusDays(1), LocalTime.of(23, 0))
-                :LocalDateTime.of(start.toLocalDate(), LocalTime.of(23, 0));
+                : LocalDateTime.of(start.toLocalDate(), LocalTime.of(23, 0));
 
         LocalDateTime owlEnd = LocalDateTime.of(end.toLocalDate(), LocalTime.of(9, 0));
 
         LocalDateTime larkStart = start.getDayOfYear() == end.getDayOfYear() ?
                 LocalDateTime.of(start.toLocalDate().minusDays(1), LocalTime.of(22, 0))
-                :LocalDateTime.of(start.toLocalDate(), LocalTime.of(22, 0));
+                : LocalDateTime.of(start.toLocalDate(), LocalTime.of(22, 0));
 
         LocalDateTime larkEnd = LocalDateTime.of(end.toLocalDate(), LocalTime.of(7, 0));
 

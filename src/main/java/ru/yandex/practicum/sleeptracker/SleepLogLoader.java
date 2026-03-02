@@ -31,9 +31,9 @@ public class SleepLogLoader {
     }
 
     public List<SleepingSession> readFile(File file, DateTimeFormatter formatter, String separator) throws IOException {
-        List<SleepingSession> sessions = new ArrayList<>();
-        try (FileReader fileReader = new FileReader (file, StandardCharsets. UTF_8);
-             BufferedReader reader = new BufferedReader (fileReader)) {
+        List<SleepingSession> sessions;
+        try (FileReader fileReader = new FileReader(file, StandardCharsets.UTF_8);
+             BufferedReader reader = new BufferedReader(fileReader)) {
             sessions = reader.lines()
                     .map((String line) -> parseLine(line, formatter, separator))
                     .filter(Optional::isPresent)
@@ -42,11 +42,10 @@ public class SleepLogLoader {
             if (sessions.isEmpty()) {
                 System.out.println("Прочитан пустой файл " + file.getName());
             }
+        } catch (IOException exception) {
+            System.out.println("Произошла ошибка при чтении из файла" + file.getName());
+            throw exception;
         }
-        catch (IOException exception) {
-                System.out.println( "Произошла ошибка при чтении из файла" + file. getName ());
-                throw exception;
-            }
         return sessions;
     }
 

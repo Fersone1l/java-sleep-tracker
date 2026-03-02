@@ -71,10 +71,10 @@ class SleepLogLoaderTest {
 
         Files.writeString(file,
                 """
-                01.01.25 22:00;02.01.25 06:00;GOOD
-                wrong data
-                02.01.25 22:00;03.01.25 06:00;BAD
-                """,
+                        01.01.25 22:00;02.01.25 06:00;GOOD
+                        wrong data
+                        02.01.25 22:00;03.01.25 06:00;BAD
+                        """,
                 StandardCharsets.UTF_8);
 
         List<SleepingSession> sessions = loader.loadFromFile(

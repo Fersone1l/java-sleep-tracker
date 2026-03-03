@@ -21,6 +21,7 @@ public class SleepTrackerApp {
         try {
             if (args.length == 0) {
                 System.err.println("Ошибка! Укажите путь к файлу с данными сна.");
+                return;
             }
 
             String sleepLogFile = args[0];

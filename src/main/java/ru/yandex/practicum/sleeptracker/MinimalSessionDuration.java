@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class MinimalSessionDuration implements Function<List<SleepingSession>, SleepAnalysisResult> {
-    public static final String TITLE = "Минимальная продолжительность сессии сна (в минутах)";
+    private static final String TITLE = "Минимальная продолжительность сессии сна (в минутах)";
 
     @Override
     public SleepAnalysisResult apply(List<SleepingSession> sessions) {

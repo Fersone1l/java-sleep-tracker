@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.function.Function;
 
 public class NightsWithoutSleepCount implements Function<List<SleepingSession>, SleepAnalysisResult> {
-    public static final String TITLE = "Количество ночей без сна";
+    private static final String TITLE = "Количество ночей без сна";
+
+    public static final LocalTime NIGHT_START = LocalTime.of(0, 0);
+    public static final LocalTime NIGHT_END = LocalTime.of(6, 0);
+    public static final LocalTime MIDDAY = LocalTime.of(12, 0);
 
     @Override
     public SleepAnalysisResult apply(List<SleepingSession> sessions) {
@@ -39,19 +43,16 @@ public class NightsWithoutSleepCount implements Function<List<SleepingSession>, 
         if (session.start().toLocalDate().equals(session.end().toLocalDate())) {
             LocalTime start = session.start().toLocalTime();
             LocalTime end = session.end().toLocalTime();
-            LocalTime nightStart = LocalTime.of(0, 0);
-            LocalTime nightEnd = LocalTime.of(6, 0);
 
-            return !start.isBefore(nightStart) && !end.isAfter(nightEnd) ||
-                    start.isBefore(nightEnd) && end.isAfter(nightStart);
+            return !start.isBefore(NIGHT_START) && !end.isAfter(NIGHT_END) ||
+                    start.isBefore(NIGHT_END) && end.isAfter(NIGHT_START);
         } else {
             return true;
         }
     }
 
     private LocalDate getNightDate(SleepingSession session) {
-        LocalTime midday = LocalTime.of(12, 0);
-        if (session.start().toLocalTime().isAfter(midday)) {
+        if (session.start().toLocalTime().isAfter(MIDDAY)) {
             return session.start().toLocalDate().plusDays(1);
         } else {
             return session.start().toLocalDate();

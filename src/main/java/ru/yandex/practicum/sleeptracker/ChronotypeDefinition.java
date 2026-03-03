@@ -9,7 +9,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ChronotypeDefinition implements Function<List<SleepingSession>, SleepAnalysisResult> {
-    public static final String TITLE = "Хронотип";
+    private static final String TITLE = "Хронотип";
 
     @Override
     public SleepAnalysisResult apply(List<SleepingSession> sessions) {

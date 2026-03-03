@@ -6,7 +6,7 @@ import java.util.OptionalDouble;
 import java.util.function.Function;
 
 public class AverageSessionDuration implements Function<List<SleepingSession>, SleepAnalysisResult> {
-    public static final String TITLE = "Средняя продолжительность сессии сна (в минутах)";
+    private static final String TITLE = "Средняя продолжительность сессии сна (в минутах)";
 
     @Override
     public SleepAnalysisResult apply(List<SleepingSession> sessions) {
